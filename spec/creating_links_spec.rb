@@ -6,7 +6,7 @@ feature "creating links" do
   click_button "Create link"
   expect(current_path).to eq '/links'
 
-  within 'url#links' do
+  within 'ul#links' do
     expect(page).to have_content('This is Zombocom')
   end
 
