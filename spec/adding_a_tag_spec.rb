@@ -3,11 +3,9 @@ feature "Adding a tag" do
     visit '/links/new'
     fill_in "url", with: "http://www.zombo.com/"
     fill_in "title", with: "This is Zombocom"
-    fill_in "tag", with: "dope"
+    fill_in "tags", with: "dope"
     click_button "Create link"
-
-    within 'ul#links' do
-      expect(page).to have_content("dope")
-    end
+    link = Link.first
+    expect(link.tags.map(&:name)).to include("dope")
   end
 end
